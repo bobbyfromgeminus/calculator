@@ -1,12 +1,12 @@
 'use strict';
 
-const projector = document.querySelector('.projector');
-const numButtons = document.querySelectorAll('.num');
-const oprButtons = document.querySelectorAll('.operation');
-const clrButton = document.querySelector('.clear');
-const resButton = document.querySelector('.result');
-const numArray = new Array;
-const oprArray = new Array;
+const projector = document.querySelector('.projector');             //  kijelző
+const numButtons = document.querySelectorAll('.num');               //  szám gombok
+const oprButtons = document.querySelectorAll('.operation');         //  művelet gombok
+const clrButton = document.querySelector('.clear');                 //  törlés gomb
+const resButton = document.querySelector('.result');                //  eredmény gomb
+const numArray = new Array;                                         //  számok tömbje
+const oprArray = new Array;                                         //  műveletek tömbje
 
 // operátorok műveletei egy objektumban
 const operatorsObject = (opr, num1, num2) => {
@@ -45,6 +45,7 @@ const splitArray = (element) => element.split(' ');
 
 // Kijelző tömb szétválogatása számokra és operátorokra
 const separateArray = (arr) => arr.forEach((element, index) => (index % 2 === 0) ? numArray.push(parseFloat(element)) : oprArray.push(element));
+//                                                                                                   ^ itt majd vizsgálnom kell, hogy biztonságos-e a szám
 
 // Eseménykezelők
 const numButtonEvent = () => numButtons.forEach((element, index) => element.addEventListener('click', () => writeNum(index)));
