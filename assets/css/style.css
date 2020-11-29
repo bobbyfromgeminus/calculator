@@ -40,6 +40,7 @@ body {
     font-size: .8rem;
     line-height: 2.5rem;
     background-color: rgba(249, 249, 249, 1);
+    border-radius: .2rem;
 }
 
 .box-item:hover {
@@ -69,9 +70,11 @@ body {
 
 .info-projector,.info-projector:hover {
     width: 100%;
-    height: auto;
+    height: .8rem;
+    display: block;
     background-color: rgba(255, 255, 255, 1);
-    padding: 0;
+    padding: 0 10px;
+    margin: 0;
     line-height: .8rem;
     cursor: inherit;
     border: 0;
