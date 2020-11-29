@@ -9,11 +9,11 @@ body {
     font-family: Arial, Helvetica, sans-serif
 }
 
-.calc-body {
+.box-container {
     display: flex;
     flex-wrap: wrap;
     position: absolute;
-    margin: -135px 0 0 -135px;
+    margin: -185px 0 0 -135px;
     left: 50%;
     top: 50%;
     width: 272px;
@@ -54,7 +54,7 @@ body {
     width: 100%;
     background-color: rgba(255, 255, 255, 1);
     color: rgba(45, 45, 45, .7);
-    margin-bottom: 10px;
+    margin-top: 10px;
     text-align: center;
     padding: 0 10px;
     font-size: 1.1rem;
@@ -63,6 +63,36 @@ body {
     letter-spacing: .4rem;
     border: 0;
 }
+
+.error-projector,.error-projector:hover {
+    width: 100%;
+    height: auto;
+    background-color: rgba(255, 255, 255, 1);
+    color: rgba(192, 0, 0, 1);
+    text-align: center;
+    padding: 0;
+    font-size: .9rem;
+    line-height: .8rem;
+    cursor: inherit;
+    font-weight: 800;
+    border: 0;
+    opacity: 0;
+}
+
+.display-error {
+    animation: fadeIn ease 2s;
+    -webkit-animation: fadeIn ease 2s;
+    -moz-animation: fadeIn ease 2s;
+    -o-animation: fadeIn ease 2s;
+    -ms-animation: fadeIn ease 2s;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    3% {opacity:1;}
+    90% {opacity:1;}
+    100% {opacity:0;}
+} 
 
 .projector,.projector:hover {
     width: 100%;
