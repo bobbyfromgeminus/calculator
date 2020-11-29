@@ -1,7 +1,7 @@
 'use strict';
 
 const projector = document.querySelector('.projector');                                             //  kijelző
-const errorProjector = document.querySelector('.error-projector');                                  //  hibakijelző
+const infoProjector = document.querySelector('.info-projector');                                    //  hibakijelző
 const numButtons = document.querySelectorAll('.num');                                               //  szám gombok
 const oprButtons = document.querySelectorAll('.operation');                                         //  művelet gombok
 const clrButton = document.querySelector('.clear');                                                 //  törlés gomb
@@ -21,7 +21,7 @@ const operatorsObject = {
 const writeNum = (i) => projector.textContent = projector.textContent + numButtons[i].textContent;
 
 //  OPERÁTOROK KIÍRÁSA A KIJELZŐRE - VIZSGÁLATTAL KIEGÉSZÍTVE: NEM KEZDHETÜNK MŰVELETTEL
-const writeOpr = (i) => (isNaN(parseFloat(projector.textContent)) === true) ? errorProjector.classList.add('display-error') : projector.textContent = projector.textContent + ' ' + oprButtons[i].textContent + ' ';
+const writeOpr = (i) => (isNaN(parseFloat(projector.textContent)) === true) ? writeError() : projector.textContent = projector.textContent + ' ' + oprButtons[i].textContent + ' ';
 
 //  KIJELZŐ TARTALMÁNAK SZÉTVÁGÁSA TÖMBBÉ
 const splitArray = (element) => element.split(' ');
@@ -36,7 +36,13 @@ const clearProjector = () => projector.textContent = '';
 const clearArrays = () => {
     numArray.splice(0, numArray.length);                                                            //  szám tömb kiürítése
     oprArray.splice(0, oprArray.length);                                                            //  operátor tömb kiürítése
-    errorProjector.classList.remove('display-error');                                               //  hibakijelző elrejtése
+    infoProjector.classList.remove('display-error');                                                //  hibakijelző elrejtése
+    infoProjector.classList.remove('display-line');                                                 //  hibakijelző elrejtése
+}
+
+const writeError = () => {
+    infoProjector.textContent = 'Hiba: nem kezdhetsz műveleti jellel!';                             //  hibaüzenet átadása
+    infoProjector.classList.add('display-error')                                                    //  info kijelző error állapotának átadása
 }
 
 //  EREDMÉNY SZÁMÍTÁSA
@@ -46,12 +52,14 @@ const getResult = () => {
     separateArray(splitArray(projectorContent));                                                    //  kijelző tartalmának felbontása és szeparálása
     result = numArray[0];                                                                           //  eredmény értékének növelése a szám tömb 0. elemével
     oprArray.forEach((item, index) => result = operatorsObject[item](result, numArray[index+1]));   //  műveleti tömb iterálása, műveletek elvégzése
+    infoProjector.textContent = `${projectorContent} =`;                                            //  műveleti sor kiírása az info sávra
+    infoProjector.classList.add('display-line');                                                    //  info sáv megjelenítése a műveleti sorral
     projector.textContent = result;                                                                 //  eredmény kiírása
-    clearArrays();                                                                                  //  szám és operátor tömbök kiürítése
 }
 
 //  ESEMÉNYKEZELŐK IIFE-KÉNT MEGHÍVVA
 (() => numButtons.forEach((element, index) => element.addEventListener('click', () => writeNum(index))))();
 (() => oprButtons.forEach((element, index) => element.addEventListener('click', () => writeOpr(index))))();
+(() => infoProjector.addEventListener('webkitAnimationEnd', clearArrays))();
 (() => clrButton.addEventListener('click', clearProjector))();
 (() => resButton.addEventListener('click', getResult))();

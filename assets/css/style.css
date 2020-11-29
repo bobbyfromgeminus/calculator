@@ -1,12 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Coda:wght@400;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
 body {
+    height: 100%;
+    width: 100%;
     background-color: rgba(45,45,45,.1);
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(200, 200, 200, 1);
 }
 
 .box-container {
@@ -50,36 +53,48 @@ body {
 }
 
 .title,.title:hover {
-    font-family: 'Coda', cursive;
+    font-family: 'Exo', sans-serif;
     width: 100%;
     background-color: rgba(255, 255, 255, 1);
     color: rgba(45, 45, 45, .7);
     margin-top: 10px;
     text-align: center;
     padding: 0 10px;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
     cursor: inherit;
-    font-weight: 800;
+    font-weight: 900;
     letter-spacing: .4rem;
     border: 0;
 }
 
-.error-projector,.error-projector:hover {
+.info-projector,.info-projector:hover {
     width: 100%;
     height: auto;
     background-color: rgba(255, 255, 255, 1);
-    color: rgba(192, 0, 0, 1);
-    text-align: center;
     padding: 0;
-    font-size: .9rem;
     line-height: .8rem;
     cursor: inherit;
-    font-weight: 800;
     border: 0;
     opacity: 0;
 }
 
+.display-line {
+    font-weight: 400;
+    font-size: .7rem;
+    text-align: right;
+    color: rgba(45, 45, 45, 1);
+    animation: fadeIn ease 4s;
+    -webkit-animation: fadeIn ease 4s;
+    -moz-animation: fadeIn ease 4s;
+    -o-animation: fadeIn ease 4s;
+    -ms-animation: fadeIn ease 4s;
+}
+
 .display-error {
+    font-weight: 800;
+    font-size: .9rem;
+    text-align: center;
+    color: rgba(192, 0, 0, 1);
     animation: fadeIn ease 2s;
     -webkit-animation: fadeIn ease 2s;
     -moz-animation: fadeIn ease 2s;
